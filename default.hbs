@@ -49,9 +49,11 @@
         <link rel="stylesheet" href="{{asset 'css/animate.css'}}" />
         <link rel="stylesheet" href="{{asset 'css/gist.css'}}" />
         <link rel="stylesheet" href="{{asset 'css/phantom.css'}}" />
+        <link rel="stylesheet" href="{{asset 'css/2520.css'}}" />
         <script src="{{asset 'js/html5shiv-printshiv.js'}}"></script>
         <script src="{{asset 'js/respond.js'}}"></script>
-
+        <script src="{{asset 'js/2520.js'}}"></script>
+        
         {{! Page-Specific Metadata }}
         {{{block "meta"}}}
 
@@ -64,7 +66,19 @@
                 <a href="{{@blog.url}}" class="text-right sidebar brand">
                     {{#if @blog.logo}}<img src="{{@blog.logo}}" alt="{{@blog.title}}" />{{/if}}
                 </a>
-                <p class="content">{{@blog.title}}</p>
+                <a href="{{@blog.url}}">
+                    <p class="content">{{@blog.title}}</p>
+                </a>
+                <a href="/about">
+                    <p id="about" class="content-right">About</p>
+                </a>
+                <a href="/services">
+                    <p id="services" class="content-right">Services</p>
+                </a>
+                <a href="/">
+                    <p {{#is "home"}}class="selected content-right" {{else}}class="content-right" {{/is}} >Blog</p>
+                </a>
+
             </div>
         </nav>
         <div class="main">
@@ -72,8 +86,8 @@
         </div>
         <footer class="animated fadeIn" id="footer">
             <div class="container text-center">
-                <p class="copyright"><span>Made by {{@blog.title}}.</span> <span>Powered by Ghost.</span></p>
-                <a href="https://github.com/haydenbleasel/phantom" class="theme">Theme: Phantom by Hayden Bleasel</a>
+                <p class="copyright"><span>Made by <a href="/author/jon-holt">Jon Holt</a>.</span> <span>Powered by Ghost.</span></p>
+                <a href="https://github.com/haydenbleasel/phantom" class="theme">Genesis of the theme: Phantom by Hayden Bleasel</a>
             </div>
         </footer>
 
@@ -83,6 +97,19 @@
         <script src="{{asset 'js/fastclick.js'}}"></script>
         <script src="{{asset 'js/stellar.js'}}"></script>
         <script src="{{asset 'js/phantom.js'}}"></script>
-
+        <script>
+            var about = ("{{post.title}}"=="About");
+            var services = ("{{post.title}}"=="Services");
+            if(about){
+                var p = document.getElementById('about');
+                if(p)
+                    p.className = p.className + " selected";
+            }
+            if(services){
+                var p = document.getElementById('services');
+                if(p)
+                    p.className = p.className + " selected";
+            }
+        </script>
     </body>
 </html>
