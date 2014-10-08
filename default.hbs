@@ -81,13 +81,13 @@
                     <p class="content">{{@blog.title}}</p>
                 </a>
                 <a href="/about">
-                    <p id="about" class="content-right">About</p>
+                    <p id="about" class="content-right">Be</p>
                 </a>
                 <a href="/services">
-                    <p id="services" class="content-right">Services</p>
+                    <p id="services" class="content-right">Work</p>
                 </a>
                 <a href="/">
-                    <p {{#is "home"}}class="selected content-right" {{else}}class="content-right" {{/is}} >Blog</p>
+                    <p {{#is "home"}}class="selected content-right" {{else}}class="content-right" {{/is}} >Write</p>
                 </a>
 
             </div>
@@ -109,8 +109,8 @@
         <script src="{{asset 'js/stellar.js'}}"></script>
         <script src="{{asset 'js/phantom.js'}}"></script>
         <script>
-            var about = ("{{post.title}}"=="About");
-            var services = ("{{post.title}}"=="Services");
+            var about = ("{{post.slug}}"=="about");
+            var services = ("{{post.slug}}"=="services");
             if(about){
                 var p = document.getElementById('about');
                 if(p)
